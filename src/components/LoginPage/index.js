@@ -1,11 +1,11 @@
 //import logo from './logo.svg';
-import './App.css';
+import '../App.css';
 import React from "react";
 
 function LoginPage(props) {
 
   const {
-    email, setEmail, password, setPassword, onLogin, emailError, passwordError
+    email, setEmail, password, setPassword, onLogin, emailError, passwordError, setCurrentRoute
   } = props
 
   return (
@@ -35,7 +35,8 @@ function LoginPage(props) {
             ></input>
           </label>
           <label><p>{passwordError}</p></label>
-          <button>Login</button> 
+          <button>Login</button>
+          <label className="navLabel">Don't have an account? <a onClick={e => setCurrentRoute(2)}>Create an account</a></label>
         </form>
       </header>
   );

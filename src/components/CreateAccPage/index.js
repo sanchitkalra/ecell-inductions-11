@@ -1,8 +1,12 @@
 //import logo from './logo.svg';
-import './App.css';
+import '../App.css';
 import React from "react";
 
-function CreateAccPage() {
+function CreateAccPage(props) {
+
+  const {
+    email, setEmail, password, setPassword, name, setName, emailError, passwordError, setCurrentRoute, onCreateAcc
+  } = props
 
   return (
       <header className="App-header">
@@ -19,6 +23,7 @@ function CreateAccPage() {
               required
             ></input>
           </label>
+          <label></label>
           <label>
             <input
               type="email"
@@ -29,6 +34,7 @@ function CreateAccPage() {
               required
             ></input>
           </label>
+          <label><p>{emailError}</p></label>
           <label>
             <input
               type="password"
@@ -38,8 +44,11 @@ function CreateAccPage() {
               onChange={e => setPassword(e.target.value)}
               required
             ></input>
-            <button>Create Account</button> 
           </label>
+          <label><p>{passwordError}</p></label>
+          <button>Create Account</button> 
+          <label></label>
+          <label className="navLabel">Have an account? <a onClick={e => setCurrentRoute(1)}>Login</a></label>
         </form>
       </header>
   );

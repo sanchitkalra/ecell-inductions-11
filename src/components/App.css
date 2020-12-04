@@ -106,6 +106,13 @@ button:hover {
   flex-wrap: wrap;
 }
 
+.navLabel {
+  justify-content: center;
+  margin-top: 20px;
+  display: flex;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+}
+
 /* .App {
   text-align: center;
 }

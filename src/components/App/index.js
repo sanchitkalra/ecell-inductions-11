@@ -1,6 +1,6 @@
 //import logo from './logo.svg';
-import './App.css';
-import {React, useEffect, useState} from "react";
+import '../App.css';
+import React, {useEffect, useState} from "react";
 import firebaseRef from '../../firebaseRef';
 import LoginPage from '../LoginPage'
 import CreateAccPage from '../CreateAccPage'
@@ -13,7 +13,9 @@ function App() {
   const [emailError, setEmailError] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [passwordError, setPasswordError] = React.useState('')
+  const [name, setName] = React.useState('')
   const [hasAccount, setHasAccount] = React.useState(false)
+  const [currentRoute, setCurrentRoute] = React.useState(1)
 
   function clearInputs() {
     setEmail('')
@@ -74,10 +76,27 @@ function App() {
     authListener()
   }, [])
 
-  return (
-    <div className="App">
-      {user ? <HomePage /> :
-            <LoginPage 
+  function ShowPage() {
+    if (user) {
+        return <HomePage 
+            setCurrentRoute = {setCurrentRoute}
+        />
+    } else {
+        if (currentRoute === 2) {
+            return <CreateAccPage
+                email = {email}
+                setEmail = {setEmail}
+                password = {password}
+                setPassword = {setPassword}
+                name = {name}
+                setName = {setName}
+                emailError = {emailError}
+                passwordError = {passwordError}
+                setCurrentRoute = {setCurrentRoute}
+                onCreateAcc = {onCreateAcc}
+            />
+        } else {
+            return <LoginPage 
                 email = {email}
                 setEmail = {setEmail}
                 password = {password}
@@ -85,10 +104,15 @@ function App() {
                 onLogin = {onLogin}
                 emailError = {emailError}
                 passwordError = {passwordError}
-                hasAccount = {hasAccount}
-                setHasAccount = {setHasAccount}
+                setCurrentRoute = {setCurrentRoute}
             />
         }
+    }
+  }
+
+  return (
+    <div className="App">
+      <ShowPage />
     </div>
   );
 }
