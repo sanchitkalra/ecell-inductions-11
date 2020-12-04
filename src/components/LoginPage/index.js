@@ -5,12 +5,20 @@ import React from "react";
 function LoginPage(props) {
 
   const {
-    email, setEmail, password, setPassword, onLogin, emailError, passwordError, setCurrentRoute
+    onLogin, emailError, passwordError, setCurrentRoute
   } = props
+
+  const [tempEmail, setTempEmail] = React.useState('')
+  const [tempPassword, setTempPassword] = React.useState('')
+
+  function onLoginPress(event) {
+    event.preventDefault()
+    onLogin(tempEmail, tempPassword)
+  }
 
   return (
       <header className="App-header">
-        <form onSubmit={onLogin}>
+        <form onSubmit={onLoginPress}>
           <h1>E-Cell BPHC</h1>
           <h4>Login to your account</h4>
           <label>
@@ -18,8 +26,8 @@ function LoginPage(props) {
               type="email"
               name="email"
               placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              value={tempEmail}
+              onChange={e => setTempEmail(e.target.value)}
               required
             ></input>
           </label>
@@ -29,14 +37,14 @@ function LoginPage(props) {
               type="password"
               name="password"
               placeholder="Password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
+              value={tempPassword}
+              onChange={e => setTempPassword(e.target.value)}
               required
             ></input>
           </label>
           <label><p>{passwordError}</p></label>
           <button>Login</button>
-          <label className="navLabel">Don't have an account? <a onClick={e => setCurrentRoute(2)}>Create an account</a></label>
+          <label className="navLabel"><a onClick={e => setCurrentRoute(2)}>Don't have an account? Create an account</a></label>
         </form>
       </header>
   );

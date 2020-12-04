@@ -5,12 +5,21 @@ import React from "react";
 function CreateAccPage(props) {
 
   const {
-    email, setEmail, password, setPassword, name, setName, emailError, passwordError, setCurrentRoute, onCreateAcc
+    emailError, passwordError, setCurrentRoute, onCreateAcc
   } = props
+
+  const [tempName, setTempName] = React.useState('')
+  const [tempEmail, setTempEmail] = React.useState('')
+  const [tempPassword, setTempPassword] = React.useState('')
+
+  function onCreateAccPress(event) {
+    event.preventDefault()
+    onCreateAcc(tempName, tempEmail, tempPassword)
+  }
 
   return (
       <header className="App-header">
-        <form onSubmit={onCreateAcc}>
+        <form onSubmit={onCreateAccPress}>
           <h1>E-Cell BPHC</h1>
           <h4>Create a new E-Cell Account</h4>
           <label>
@@ -18,8 +27,8 @@ function CreateAccPage(props) {
               type="text"
               name="name"
               placeholder="Name"
-              value={name}
-              onChange={e => setName(e.target.value)}
+              value={tempName}
+              onChange={e => setTempName(e.target.value)}
               required
             ></input>
           </label>
@@ -29,8 +38,8 @@ function CreateAccPage(props) {
               type="email"
               name="email"
               placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              value={tempEmail}
+              onChange={e => setTempEmail(e.target.value)}
               required
             ></input>
           </label>
@@ -40,15 +49,15 @@ function CreateAccPage(props) {
               type="password"
               name="password"
               placeholder="Password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
+              value={tempPassword}
+              onChange={e => setTempPassword(e.target.value)}
               required
             ></input>
           </label>
           <label><p>{passwordError}</p></label>
           <button>Create Account</button> 
           <label></label>
-          <label className="navLabel">Have an account? <a onClick={e => setCurrentRoute(1)}>Login</a></label>
+          <label className="navLabel"><a onClick={e => setCurrentRoute(1)}>Have an account? Login</a></label>
         </form>
       </header>
   );

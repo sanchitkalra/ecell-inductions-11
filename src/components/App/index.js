@@ -1,6 +1,6 @@
 //import logo from './logo.svg';
 import '../App.css';
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import firebaseRef from '../../firebaseRef';
 import LoginPage from '../LoginPage'
 import CreateAccPage from '../CreateAccPage'
@@ -8,27 +8,23 @@ import HomePage from '../HomePage'
 
 function App() {
 
-  const [user, setUser] = React.useState('')
-  const [email, setEmail] = React.useState('')
   const [emailError, setEmailError] = React.useState('')
-  const [password, setPassword] = React.useState('')
   const [passwordError, setPasswordError] = React.useState('')
-  const [name, setName] = React.useState('')
-  const [hasAccount, setHasAccount] = React.useState(false)
   const [currentRoute, setCurrentRoute] = React.useState(1)
+  const [user, setUser] = React.useState('')
 
-  function clearInputs() {
-    setEmail('')
-    setPassword('')
-  }
+//   function clearInputs() {
+//     setEmail('')
+//     setPassword('')
+//   }
 
-  function clearInputErrors() {
-    setEmailError('')
-    setPasswordError('')
-  }
+//   function clearInputErrors() {
+//     setEmailError('')
+//     setPasswordError('')
+//   }
 
-  function onLogin(event) {
-    clearInputErrors()
+  function onLogin(email, password) {
+    //clearInputErrors()
     console.log(email, " ", password)
     firebaseRef.auth().signInWithEmailAndPassword(email, password).catch((error) => {
       switch (error.code) {
@@ -40,13 +36,14 @@ function App() {
         case "auth/invalid-password":
           setPasswordError(error.message)
           break
+        default:
+            setPasswordError('Unexpected error')
       }
     })
-    event.preventDefault()
   }
 
-  function onCreateAcc(event) {
-    clearInputErrors()
+  function onCreateAcc(name, email, password) {
+    //clearInputErrors()
     console.log(email, " ", password)
     firebaseRef.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
       switch (error.code) {
@@ -57,9 +54,10 @@ function App() {
         case "auth/weak-password":
           setPasswordError(error.message)
           break
+        default:
+            setPasswordError('Unexpected error')
       }
     })
-    event.preventDefault()
   }
 
   function authListener() {
@@ -84,12 +82,6 @@ function App() {
     } else {
         if (currentRoute === 2) {
             return <CreateAccPage
-                email = {email}
-                setEmail = {setEmail}
-                password = {password}
-                setPassword = {setPassword}
-                name = {name}
-                setName = {setName}
                 emailError = {emailError}
                 passwordError = {passwordError}
                 setCurrentRoute = {setCurrentRoute}
@@ -97,10 +89,6 @@ function App() {
             />
         } else {
             return <LoginPage 
-                email = {email}
-                setEmail = {setEmail}
-                password = {password}
-                setPassword = {setPassword}
                 onLogin = {onLogin}
                 emailError = {emailError}
                 passwordError = {passwordError}

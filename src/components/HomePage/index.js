@@ -5,14 +5,6 @@ import firebase from '../../firebaseRef';
 
 function HomePage() {
 
-  const [user, setUser] = React.useState('')
-  const [name, setName] = React.useState('')
-  const [email, setEmail] = React.useState('')
-  const [emailError, setEmailError] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const [passwordError, setPasswordError] = React.useState('')
-  const [hasAccount, setHasAccount] = React.useState(false)
-
   function onLogout(event) {
     firebase.auth().signOut()
   }
@@ -22,6 +14,7 @@ function HomePage() {
       <header className="App-header">
         <h1>Home Page</h1>
         <button onClick={onLogout}>Logout</button>
+        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FeCELL.BPHC%2Fposts%2F10158250204195102&show_text=true&width=734&appId=286370375084097&height=413" width="734" height="413" style={{border:'none',overflow:'hidden'}} scrolling="no" frameBorder={0} allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen={true}></iframe>
       </header>
     </div>
   );
