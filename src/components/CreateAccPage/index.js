@@ -8,13 +8,13 @@ function CreateAccPage(props) {
     emailError, passwordError, setCurrentRoute, onCreateAcc
   } = props
 
-  const [tempName, setTempName] = React.useState('')
-  const [tempEmail, setTempEmail] = React.useState('')
-  const [tempPassword, setTempPassword] = React.useState('')
+  const [name, setName] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
 
   function onCreateAccPress(event) {
     event.preventDefault()
-    onCreateAcc(tempName, tempEmail, tempPassword)
+    onCreateAcc(name, email, password)
   }
 
   return (
@@ -27,8 +27,8 @@ function CreateAccPage(props) {
               type="text"
               name="name"
               placeholder="Name"
-              value={tempName}
-              onChange={e => setTempName(e.target.value)}
+              value={name}
+              onChange={e => setName(e.target.value)}
               required
             ></input>
           </label>
@@ -38,8 +38,8 @@ function CreateAccPage(props) {
               type="email"
               name="email"
               placeholder="Email"
-              value={tempEmail}
-              onChange={e => setTempEmail(e.target.value)}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
               required
             ></input>
           </label>
@@ -49,8 +49,8 @@ function CreateAccPage(props) {
               type="password"
               name="password"
               placeholder="Password"
-              value={tempPassword}
-              onChange={e => setTempPassword(e.target.value)}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
               required
             ></input>
           </label>

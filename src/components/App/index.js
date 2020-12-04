@@ -18,13 +18,13 @@ function App() {
 //     setPassword('')
 //   }
 
-//   function clearInputErrors() {
-//     setEmailError('')
-//     setPasswordError('')
-//   }
+  function clearInputErrors() {
+    setEmailError('')
+    setPasswordError('')
+  }
 
   function onLogin(email, password) {
-    //clearInputErrors()
+    clearInputErrors()
     console.log(email, " ", password)
     firebaseRef.auth().signInWithEmailAndPassword(email, password).catch((error) => {
       switch (error.code) {
@@ -43,7 +43,7 @@ function App() {
   }
 
   function onCreateAcc(name, email, password) {
-    //clearInputErrors()
+    clearInputErrors()
     console.log(email, " ", password)
     firebaseRef.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
       switch (error.code) {

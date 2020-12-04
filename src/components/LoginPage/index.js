@@ -8,12 +8,12 @@ function LoginPage(props) {
     onLogin, emailError, passwordError, setCurrentRoute
   } = props
 
-  const [tempEmail, setTempEmail] = React.useState('')
-  const [tempPassword, setTempPassword] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
 
   function onLoginPress(event) {
     event.preventDefault()
-    onLogin(tempEmail, tempPassword)
+    onLogin(email, password)
   }
 
   return (
@@ -26,8 +26,8 @@ function LoginPage(props) {
               type="email"
               name="email"
               placeholder="Email"
-              value={tempEmail}
-              onChange={e => setTempEmail(e.target.value)}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
               required
             ></input>
           </label>
@@ -37,8 +37,8 @@ function LoginPage(props) {
               type="password"
               name="password"
               placeholder="Password"
-              value={tempPassword}
-              onChange={e => setTempPassword(e.target.value)}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
               required
             ></input>
           </label>

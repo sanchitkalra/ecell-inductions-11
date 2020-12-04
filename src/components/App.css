@@ -42,6 +42,15 @@ form > h4 {
   color: #222;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 2em;
+  margin-top: 0.25em;
+  color: rgb(255, 255, 255);
+}
+
 .info {
   padding-bottom: 1em;
   padding-left: 0.5em;
@@ -90,7 +99,7 @@ button {
   color: #fefefe;
 }
 button:hover {
-  background-color: #4A4E69;
+  background-color: #2a2c41;
   color: #fefefe;
 }
 
@@ -111,6 +120,15 @@ button:hover {
   margin-top: 20px;
   display: flex;
   font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.post {
+  background-color: #fff;
+}
+
+label > p{
+  font-family: "Helvetica Neue", sans-serif;
+  color: #fff;
 }
 
 /* .App {
