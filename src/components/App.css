@@ -103,6 +103,10 @@ button:hover {
   color: #fefefe;
 }
 
+iframe {
+  background-color: #fff;
+}
+
 .error {
   color:#db2269;
   font-size: 0.5em;
@@ -123,9 +127,8 @@ button:hover {
 }
 
 .post {
+  display: flex;
   justify-content: center;
-  background-color: #fff;
-  width: fit-content;
 }
 
 label > p{
