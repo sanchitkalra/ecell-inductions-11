@@ -3,8 +3,8 @@
 }
 
 body {
+  padding: 5%;
   font-family: Lato;
-  height: 97vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -123,11 +123,13 @@ button:hover {
 }
 
 .post {
+  justify-content: center;
   background-color: #fff;
+  width: fit-content;
 }
 
 label > p{
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: sans-serif;
   color: #fff;
 }
 
