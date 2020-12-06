@@ -11,7 +11,7 @@ A live preview of the app is available at [https://ecell-inductions-11.herokuapp
  - Firebase Authentication
  - Heroku
 
-To use the project, create a `firebaseConfig.js` file in the format below
+To use the project, change the `firebaseConfig.js` file with your own config obtained from the Firebase Console in the format below
 ```
 var firebaseConfig = {
     apiKey: "YOUR_API_KEY",
